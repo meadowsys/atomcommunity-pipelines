@@ -1,0 +1,81 @@
+---
+name: ci
+
+on:
+  push:
+    branches:
+    - deploy
+
+jobs:
+  deploy:
+    name: deploy to github pages
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: checkout lol
+      uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      with:
+        path: source
+
+    - name: copy meta files for node/pnpm install action
+      run: |
+        cp lol/package.json .
+        cp lol/pnpm-lock.yaml .
+
+    - name: install pnpm
+      uses: pnpm/action-setup@35ab4267a1a21c8e8cb1c087cf1642e891ff57bd # v2.2.1
+
+    - name: install node
+      uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+      with:
+        node-version: 18.4.0
+        cache: pnpm
+
+    - name: pnpm i
+      working-directory: source
+      run: pnpm i
+
+    - name: build site
+      working-directory: source
+      run: pnpm run build
+
+    - name: checkout gh-pages branch
+      uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      with:
+        ref: gh-pages
+        path: deploy
+
+    - name: install fish
+      run: |
+        sudo add-apt-repository -yn ppa:fish-shell/release-3
+        sudo apt-get update
+        sudo apt-get install fish
+
+    - name: publish
+      shell: fish {0}
+      run: |
+        git config --global user.name Autumn Meadow
+        git config --global user.email "blazeykirin@gmail.com"
+        echo https://autumnblazey:${{ secrets.GITHUB_TOKEN }}@github.com > .git/credentials
+        git config --global credential.helper "store --file=.git/credentials"
+        git config --unset-all http.https://github.com/.extraheader # https://stackoverflow.com/a/69979203
+
+        cp source/.output/public/404/index.html source/.output/public/404.html
+        rm -rf deploy/*
+        mv deploy/.git deploy/git
+        rm -rf deploy/.*
+        mv deploy/git deploy/.git
+
+        cp -R source/.output/public/* deploy
+        cp -R source/.output/public/.* deploy
+
+        cd source
+
+        set HEAD_COMMIT (git rev-parse HEAD)
+        set COMMIT_MESSAGE "automated deploy from commit $HEAD_COMMIT"
+
+        cd ../deploy
+
+        git add -A
+        git commit -m "$COMMIT_MESSAGE"
+        git push
