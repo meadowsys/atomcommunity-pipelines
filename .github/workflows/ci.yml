@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: checkout lol
+    - name: checkout
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
       with:
         path: source
 
     - name: copy meta files for node/pnpm install action
       run: |
-        cp lol/package.json .
-        cp lol/pnpm-lock.yaml .
+        cp source/package.json .
+        cp source/pnpm-lock.yaml .
 
     - name: install pnpm
       uses: pnpm/action-setup@35ab4267a1a21c8e8cb1c087cf1642e891ff57bd # v2.2.1
