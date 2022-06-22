@@ -16,3 +16,18 @@
 	let runs = await use_runs();
 	let artifacts = await use_artifacts(runs.value[0].id);
 </script>
+
+<style>
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	@layer base {
+		* {
+			@apply selection:bg-[#dcc4fe];
+		}
+		html, body, #__nuxt {
+			@apply h-full;
+		}
+	}
+</style>
