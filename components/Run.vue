@@ -41,7 +41,7 @@
 	const stop_watching_load = watch(expand, () => {
 		stop_watching_load();
 
-		use_artifacts(props.run.id, false).then(a => {
+		use_artifacts(props.run.id, is_production()).then(a => {
 			artifacts.value.push(...a.value);
 			loading.value = false;
 		});

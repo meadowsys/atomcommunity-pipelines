@@ -13,6 +13,9 @@ export default defineNuxtConfig({
 		zod: path.resolve("./node_modules/_zod/src/index.ts")
 	},
 	vite: {
+		define: {
+			"__production__": JSON.stringify(process.env.NODE_ENV === "production")
+		},
 		build: {
 			minify: "terser",
 			terserOptions: {

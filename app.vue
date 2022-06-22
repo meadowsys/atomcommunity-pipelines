@@ -17,7 +17,8 @@
 </template>
 
 <script setup lang="ts">
-	let runs = await use_runs();
+	const bypass_cache = is_production();
+	let runs = await use_runs(bypass_cache);
 </script>
 
 <style>
