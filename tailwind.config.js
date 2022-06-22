@@ -5,7 +5,7 @@ module.exports = {
 		"./{assets,components,composables,layouts,pages}/**/*.{vue,ts,js,tsx,jsx}"
 	],
 	theme: {
-		extend: {},
+		extend: {}
 	},
-	plugins: [],
+	plugins: []
 }

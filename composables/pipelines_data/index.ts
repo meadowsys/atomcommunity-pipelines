@@ -20,3 +20,5 @@ export async function use_artifacts(run_id: number, bypass_cache = true) {
 
 	return artifacts;
 }
+
+export type { Run, ListArtifacts } from "./schema";

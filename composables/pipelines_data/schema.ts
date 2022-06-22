@@ -1,5 +1,6 @@
 import { z, number, object, string } from "zod";
 
+export type Run = z.infer<typeof run_validator>;
 export const run_validator = object({
 	id: number()
 });
@@ -10,6 +11,7 @@ export const list_runs_validator = object({
 	value: run_validator.array()
 });
 
+export type Artifact = z.infer<typeof artifact_validator>;
 export const artifact_validator = object({
 	// id: number(),
 	name: string(),
