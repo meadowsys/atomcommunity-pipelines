@@ -6,21 +6,52 @@
 		first:border-t-2 border-b-2
 		first:rounded-t-xl last:rounded-b-xl
 	">
-		<div @click="expand = !expand">run id {{ run.id }}</div>
+		<div :class="expand && 'pb-3'" class="flex flex-row">
+			<span v-if="run.result === 'succeeded'" class="text-green-400" title="success">
+				(S)
+			</span>
+			<span v-else-if="run.result === 'failed'" class="text-red-400" title="failure">
+				(F)
+			</span>
+			&nbsp;
+			<span
+				@click="expand = !expand"
+				class="cursor-pointer hover:text-[#ffd152]"
+			>
+				Run {{ run.id }}
+			</span>
 
-		<template v-if="expand">
+			<div class="flex-grow" />
+
+			<a
+				:href="run._links.web.href"
+				target="_blank"
+				@click.stop
+				class="cursor-pointer hover:text-[#ffd152]"
+			>
+				(link to azure)
+			</a>
+		</div>
+
+		<div v-if="expand" class="pt-3 border-t-2 border-[#4d4b4d]">
 			<template v-if="loading">
-				<!-- loading -->
 				loading...
 			</template>
 			<template v-else>
-				artifacts:
+				<div class="text-lg pb-2">
+					<b>Artifacts</b>
+				</div>
 				<div v-for="artifact in artifacts">
-					<a :href="artifact.resource.downloadUrl" class="whitespace-nowrap">{{ artifact.name }}</a>
+					<a
+						:href="artifact.resource.downloadUrl"
+						class="whitespace-nowrap cursor-pointer hover:text-[#ffd152]"
+					>
+						{{ artifact.name }}
+					</a>
 					<br>
 				</div>
 			</template>
-		</template>
+		</div>
 	</div>
 </template>
 

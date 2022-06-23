@@ -1,7 +1,16 @@
-import { z, number, object, string } from "zod";
+import { z, literal, number, object, string, union } from "zod";
 
 export type Run = z.infer<typeof run_validator>;
 export const run_validator = object({
+	_links: object({
+		web: object({
+			href: string()
+		})
+	}),
+	result: union([
+		literal("failed"),
+		literal("succeeded")
+	]),
 	id: number()
 });
 

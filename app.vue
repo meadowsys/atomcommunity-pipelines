@@ -4,10 +4,36 @@
 		<div class="flex flex-col max-w-md w-full">
 			<div class="flex-grow" />
 
+			<div class="text-center mb-3 text-2xl">
+				Atom Community CI Builds
+			</div>
+			<div class="text-center mb-16">
+				It is here you may easily find and download CI builds of the community fork of Atom
+			</div>
+
 			<div>
-				<template v-for="run in runs.value">
-					<run :run="run" />
-				</template>
+				<run v-for="run in runs.value" :run="run" />
+			</div>
+
+			<div class="text-sm text-center mt-10">
+				by
+				<a
+					href="https://github.com/autumnblazey"
+					target="_blank"
+					class="cursor-pointer hover:text-[#ffd152]"
+				>
+					Autumn Meadow
+				</a>
+				<br>
+				for
+				<a
+					href="https://github.com/atom-community/atom"
+					target="_blank"
+					class="cursor-pointer hover:text-[#ffd152]"
+				>
+					Atom Community
+				</a>
+				(pending rebrand)
 			</div>
 
 			<div class="flex-grow" />
