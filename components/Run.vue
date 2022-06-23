@@ -13,15 +13,15 @@
 			<span v-else-if="run.result === 'failed'" class="text-red-400" title="failure">
 				(F)
 			</span>
+
 			&nbsp;
-			<span
+
+			<div
 				@click="expand = !expand"
-				class="cursor-pointer hover:text-[#ffd152]"
+				class="flex-grow cursor-pointer hover:text-[#ffd152]"
 			>
 				Run {{ run.id }}
-			</span>
-
-			<div class="flex-grow" />
+			</div>
 
 			<a
 				:href="run._links.web.href"
