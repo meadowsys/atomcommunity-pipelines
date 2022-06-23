@@ -9,7 +9,7 @@ export async function use_runs(bypass_cache = true) {
 	}
 
 	let runs = await fetch_runs();
-	cache_runs(runs);
+	if (!bypass_cache) cache_runs(runs);
 
 	return runs;
 }
@@ -22,7 +22,7 @@ export async function use_artifacts(run_id: number, bypass_cache = true) {
 	}
 
 	let artifacts = await fetch_artifacts(run_id);
-	cache_artifacts(run_id, artifacts);
+	if (!bypass_cache) cache_artifacts(run_id, artifacts);
 
 	return artifacts;
 }
