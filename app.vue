@@ -8,7 +8,7 @@
 				Atom Community CI Builds
 			</div>
 			<div class="text-center mb-16">
-				It is here you may easily find and download CI builds of the community fork of Atom
+				It is here that you will easily be able to find and download CI builds of the community fork of Atom.
 			</div>
 
 			<div>

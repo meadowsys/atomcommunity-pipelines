@@ -7,10 +7,10 @@
 		first:rounded-t-xl last:rounded-b-xl
 	">
 		<div :class="expand && 'pb-3'" class="flex flex-row">
-			<span v-if="run.result === 'succeeded'" class="text-green-400" title="success">
+			<span v-if="run.result === 'succeeded'" class="text-green-400" title="CI pipeline was a success">
 				(S)
 			</span>
-			<span v-else-if="run.result === 'failed'" class="text-red-400" title="failure">
+			<span v-else-if="run.result === 'failed'" class="text-red-400" title="CI pipeline was a failure">
 				(F)
 			</span>
 
