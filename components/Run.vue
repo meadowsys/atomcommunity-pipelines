@@ -18,9 +18,9 @@
 
 			<div
 				@click="expand = !expand"
-				class="flex-grow cursor-pointer hover:text-[#ffd152]"
+				class="flex-grow cursor-pointer"
 			>
-				Run {{ run.id }}
+				<span class="hover:text-[#ffd152]">Run {{ run.id }}</span>
 			</div>
 
 			<a
