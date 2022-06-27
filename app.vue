@@ -4,9 +4,9 @@
 		<div class="flex flex-col max-w-md w-full">
 			<div class="flex-grow" />
 
-			<div class="text-center mb-3 text-2xl">
+			<header class="text-center mb-3 text-2xl">
 				Atom Community CI Builds
-			</div>
+			</header>
 			<div class="text-center mb-16">
 				It is here that you will easily be able to find and download CI builds of the community fork of Atom.
 			</div>
@@ -15,7 +15,7 @@
 				<run v-for="run in runs.value" :run="run" />
 			</div>
 
-			<div class="text-sm text-center mt-10">
+			<footer class="text-sm text-center mt-10">
 				by
 				<a
 					href="https://github.com/autumnblazey"
@@ -24,7 +24,9 @@
 				>
 					Autumn Meadow
 				</a>
+
 				<br>
+
 				for
 				<a
 					href="https://github.com/atom-community/atom"
@@ -34,7 +36,17 @@
 					Atom Community
 				</a>
 				(pending rebrand)
-			</div>
+
+				<br>
+
+				<a
+					href="https://github.com/autumnblazey/atomcommunity-pipelines"
+					target="_blank"
+					class="hover:text-[#ffd152]"
+				>
+					source code for this site
+				</a>
+			</footer>
 
 			<div class="flex-grow" />
 		</div>
