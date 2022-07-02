@@ -7,9 +7,14 @@ export const run_validator = object({
 			href: string()
 		})
 	}),
+	state: union([
+		literal("completed"),
+		literal("inProgress")
+	]),
 	result: union([
 		literal("failed"),
-		literal("succeeded")
+		literal("succeeded"),
+		z.undefined()
 	]),
 	id: number()
 });
