@@ -12,6 +12,7 @@ export const run_validator = object({
 		literal("inProgress")
 	]),
 	result: union([
+		literal("canceled"),
 		literal("failed"),
 		literal("succeeded"),
 		undefined()
