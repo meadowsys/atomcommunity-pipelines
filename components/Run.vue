@@ -13,6 +13,9 @@
 			<span v-else-if="run.result === 'failed'" class="text-red-400" title="CI pipeline was a failure">
 				(F)
 			</span>
+			<span v-else-if="run.state === 'inProgress'" class="text-blue-400" title="CI pipeline is in progess">
+				(I)
+			</span>
 
 			&nbsp;
 
