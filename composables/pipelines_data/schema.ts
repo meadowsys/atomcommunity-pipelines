@@ -1,4 +1,4 @@
-import { z, literal, number, object, string, union } from "zod";
+import { z, literal, number, object, string, undefined, union } from "zod";
 
 export type Run = z.infer<typeof run_validator>;
 export const run_validator = object({
@@ -14,7 +14,7 @@ export const run_validator = object({
 	result: union([
 		literal("failed"),
 		literal("succeeded"),
-		z.undefined()
+		undefined()
 	]),
 	id: number()
 });
