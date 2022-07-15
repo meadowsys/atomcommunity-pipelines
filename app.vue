@@ -8,7 +8,7 @@
 				Atom Community CI Builds
 			</header>
 			<div class="text-center mb-16">
-				It is here that you will easily be able to find and download CI builds of the community fork of Atom.
+				It is here that you will easily be able to find and download CI builds of the community fork of Atom <a href="https://github.com/atom-community/atom">(atom-community)</a>.
 			</div>
 
 			<div>
